@@ -1,14 +1,25 @@
 import React from "react";
-import Note from "./Note"; 
+import Note from './Note';
+import AddNote from './AddNote';
 
-const NotesList=()=> {
-    return <div className='notes-List'>
-        <Note />
-        <Note />
-        <Note />
-        <Note />
+const NotesList = ({
+	notes,
+	handleAddNote,
+	handleDeleteNote,
+}) => {
+	return (
+		<div className='notes-list'>
+			{notes.map((note) => (
+				<Note
+					id={note.id}
+					text={note.text}
+					date={note.date}
+					handleDeleteNote={handleDeleteNote}
+				/>
+			))}
+			<AddNote handleAddNote={handleAddNote} />
+		</div>
+	);
+};
 
-    </div>
-}
-
-export default NotesList
+export default NotesList;
